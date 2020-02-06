@@ -1,0 +1,27 @@
+{
+    "builders": [{
+       "type": "amazon-ebs",
+       "region": "us-east-1",
+       "source_ami": "ami-2757f631",
+       "instance_type": "t2.micro",
+       "ssh_username": "ubuntu",
+       "ami_name": "api-instance {{timestamp}}"
+     }],
+     "provisioners": [
+       {
+         "type": "shell",
+         "inline": ["mkdir app", "sudo apt-get update", "sudo apt-get -y install npm nodejs"],
+         "pause_before": "10s"
+       },
+       {
+         "type": "file",
+         "source" : "App/",
+         "destination" : "app"
+       },
+      {
+        "type": "shell",
+       "inline": ["cd app", "sudo npm install -g n", "sudo n stable", "sudo npm install -g @angular/cli","npm install", "sudo ./nginx.sh"],
+       "pause_before": "10s"
+      }
+     ]
+   }
