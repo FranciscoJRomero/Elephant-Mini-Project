@@ -69,13 +69,13 @@ resource "aws_elb" "example" {
   name               = "terraform-asg-example"
   availability_zones = data.aws_availability_zones.all.names
   security_groups    = [aws_security_group.elb.id]
-  // health_check {
-  //   target              = "HTTP:${var.server_port}/"
-  //   interval            = 30
-  //   timeout             = 3
-  //   healthy_threshold   = 2
-  //   unhealthy_threshold = 2
-  // }
+  health_check {
+    target              = "HTTP:${var.server_port}/"
+    interval            = 30
+    timeout             = 3
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+  }
     # This adds a listener for incoming HTTP requests.
   listener {
     lb_port           = 80
