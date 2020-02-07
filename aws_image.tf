@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_launch_configuration" "example" {
-  image_id        = "ami-00b3d1b63198a6773"
+  image_id        = "ami-0fe653310fa0fae9a"
   instance_type   = "t2.micro"
   key_name = aws_key_pair.auth.id
   security_groups = [aws_security_group.instance.id]
@@ -60,13 +60,13 @@ resource "aws_autoscaling_group" "example" {
   health_check_type = "ELB"
   tag {
     key                 = "Name"
-    value               = "terraform-asg-example"
+    value               = "terraform-elephant-example"
     propagate_at_launch = true
   }
 }
 
 resource "aws_elb" "example" {
-  name               = "terraform-asg-example"
+  name               = "terraform-elephant-example"
   availability_zones = data.aws_availability_zones.all.names
   security_groups    = [aws_security_group.elb.id]
   health_check {

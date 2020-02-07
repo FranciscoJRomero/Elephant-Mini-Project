@@ -1,6 +1,7 @@
 set -ex
 cd App
 npm install @angular/cli
+npm install
 ./node_modules/@angular/cli/bin/ng  build --prod --build-optimizer
 npm run test-headless
 cd ..
