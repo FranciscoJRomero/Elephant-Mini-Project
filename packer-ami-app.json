@@ -20,7 +20,7 @@
        },
       {
         "type": "shell",
-       "inline": ["cd app", "sudo npm install -g n", "sudo n stable", "sudo npm install -g @angular/cli","npm install", "sudo ./nginx.sh"],
+       "inline": ["cd app", "sudo npm install -g n", "sudo n stable", "sudo ./nginx.sh"],
        "pause_before": "10s"
       }
      ]
